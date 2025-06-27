@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
+import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="India Population Dashboard",
@@ -10,6 +11,11 @@ st.set_page_config(
     initial_sidebar_state="expanded")
 
 alt.themes.enable("dark")
+
+with open("population_dashboard.html", "r") as f:
+    html_string = f.read()
+
+components.html(html_string, height=1000, scrolling=True)
 
 df_reshaped = pd.read_csv(r"D:\AI GURU Internship\India_Population_Dashboard\india_population_2010_2019.csv")
 
